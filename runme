@@ -1,0 +1,7 @@
+# All subsequent runs after running the initial provisioning and configuration or similar
+docker run -d --name puppetserver -h docker-puppetserver -p 8140:8140 \
+	-v /home/docker/puppetserver/data:/opt/puppetlabs/server/data/puppetserver \
+	-v /home/docker/puppetserver/etc:/etc/puppetlabs \
+	-v /home/docker/puppetserver/logs:/var/log/puppetlabs/puppetserver \
+	guyton/puppetserver 
+

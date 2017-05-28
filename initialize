@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd /
+tar zx --skip-old-files --preserve-permissions --preserve-order -f /tmp/etc_puppetlabs_init.tar.gz
+tar zx --skip-old-files --preserve-permissions --preserve-order -f /tmp/opt_puppetlabs_server_data_puppetserver.tar.gz
+
+chmod 0750 /var/log/puppetlabs/puppetserver
+chown 140 /var/log/puppetlabs/puppetserver
+

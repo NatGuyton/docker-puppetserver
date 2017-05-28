@@ -1,0 +1,7 @@
+# First run to initialize / provision config files on local volumes
+docker run -it --rm \
+ 	-v /home/docker/puppetserver/data:/opt/puppetlabs/server/data/puppetserver \
+ 	-v /home/docker/puppetserver/etc:/etc/puppetlabs \
+ 	-v /home/docker/puppetserver/logs:/var/log/puppetlabs/puppetserver \
+ 	guyton/puppetserver initialize
+
