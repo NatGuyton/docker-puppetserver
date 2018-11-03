@@ -1,7 +1,7 @@
 # docker-puppetserver
-## Puppet Labs puppetserver 2.8.1
+## Puppet Labs puppetserver 6.0.2
  
-This is a general purpose puppetserver.   For more information on using puppet, see https://docs.puppet.com/puppet/4.10/ 
+This is a general purpose puppetserver.   For more information on using puppet, see https://docs.puppet.com/puppet/6.0/ 
 
 When running, it's a good idea to set the hostname inside the running container (_-h parameter to "docker run"_) to the DNS name your puppetserver will be listening for requests on, as that will be the default certname value used when creating the puppet CA cert.  Alternatively, you can edit the certname in the config later.
 

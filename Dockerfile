@@ -1,6 +1,6 @@
 FROM guyton/centos7
-ENV PUPPET_SERVER_VERSION="2.8.1"
-RUN rpm -Uvh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
+ENV PUPPET_SERVER_VERSION="6.0.2"
+RUN rpm -Uvh https://yum.puppet.com/puppet6/puppet6-release-el-7.noarch.rpm
 RUN useradd -u 140 puppet
 RUN yum install -y puppetserver-$PUPPET_SERVER_VERSION; yum clean all
 CMD /opt/puppetlabs/bin/puppetserver foreground
@@ -11,7 +11,7 @@ VOLUME /etc/puppetlabs /opt/puppetlabs/server/data/puppetserver /var/log/puppetl
 #
 # Fix up JAVA_ARGS to remove obsolete param and allow for override by setting JAVA_ARGS as docker env variable
 #
-RUN mv /etc/sysconfig/puppetserver /etc/sysconfig/puppetserver-orig; cat /etc/sysconfig/puppetserver-orig | sed -e 's/-Xms2g -Xmx2g -XX:MaxPermSize=256m/\${JAVA_ARGS:--Xms2g -Xmx2g}/' > /etc/sysconfig/puppetserver
+RUN mv /etc/sysconfig/puppetserver /etc/sysconfig/puppetserver-orig; cat /etc/sysconfig/puppetserver-orig | sed -e 's/-Xms2g -Xmx2g/\${JAVA_ARGS:--Xms2g -Xmx2g}/' > /etc/sysconfig/puppetserver
 
 
 # 
@@ -22,6 +22,12 @@ RUN mv /etc/sysconfig/puppetserver /etc/sysconfig/puppetserver-orig; cat /etc/sy
 #
 RUN tar zcf /tmp/etc_puppetlabs_init.tar.gz /etc/puppetlabs ; tar zcf /tmp/opt_puppetlabs_server_data_puppetserver.tar.gz /opt/puppetlabs/server/data/puppetserver
 COPY initialize /usr/local/bin/initialize
+
+
+#
+# Install r10k
+#
+RUN /opt/puppetlabs/bin/puppetserver gem install r10k
 
 
 #
