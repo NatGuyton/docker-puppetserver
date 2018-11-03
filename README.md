@@ -15,7 +15,7 @@ There are three volumes that you will want to map outside of the running contain
 
 I prefer to map these to local volumes on my host, but they can be mapped to a data container as well.  
 
-#### Local Volume Method
+### Local Volume Method
 The first time you run the container, you'll want to initialize the volumes with their original content, which is not done automatically.   You can do so with the packaged alternative command "initialize", which will provision the local directories and exit:
 ```
 # First run to initialize / provision config files on local volumes
