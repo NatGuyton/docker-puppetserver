@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="2.7.2"
+version="2.8.1"
 
 docker build -t="guyton/puppetserver:$version" . && \
 docker tag -f guyton/puppetserver:$version guyton/puppetserver:latest

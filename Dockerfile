@@ -1,5 +1,5 @@
 FROM guyton/centos7
-ENV PUPPET_SERVER_VERSION="2.7.2"
+ENV PUPPET_SERVER_VERSION="2.8.1"
 RUN rpm -Uvh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
 RUN useradd -u 140 puppet
 RUN yum install -y puppetserver-$PUPPET_SERVER_VERSION; yum clean all
